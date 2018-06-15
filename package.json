@@ -1,0 +1,19 @@
+{
+  "name": "projet_js",
+  "version": "1.0.0",
+  "description": "Le but de ce projet est de réaliser une application web affichant un flux de news relatif à un sujet spécifique.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emiroon/Projet-NewsFeed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emiroon/Projet-NewsFeed/issues"
+  },
+  "homepage": "https://github.com/Emiroon/Projet-NewsFeed#readme"
+}

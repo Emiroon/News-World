@@ -3,18 +3,16 @@ const router = express.Router()
 const axios = require('axios')
 
 router.route('/').get(function(request, response) {
-    response.send('Hello World')
+    response.send('<a href="/news">Acceder aux news !</a>')
 })
 
 router.route('comments').get((request, response) => {
-    const news = [{'title' : 1}]
-    response.send(news)
+    //No use for now ?
 })
 
 router.route('/comments').get((request, response) => {
-    var request = axios
-        .get('https://newsapi.org/v2/top-headlines?country=fr&apiKey=52fc969cb14946979ebfe1abafb0c88a')
-        .then((httpResponse) => response.send(httpResponse.data))
+	
+    //No use for now ?
 
 })
 
@@ -25,7 +23,11 @@ router.route('/news').get((request, response) => {
 })
 
 router.route('/news/:id').get((request, response) => {
-
+	
+	// a voir source de l'article ?
+	var request = axios
+        .get('https://newsapi.org/v2/top-headlines?country=fr&articles='+request.params.id+'&apiKey=52fc969cb14946979ebfe1abafb0c88a')
+        .then((httpResponse) => response.send(httpResponse.data))
 })
 
 module.exports = router

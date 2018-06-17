@@ -1,6 +1,6 @@
 # News Feed Project - Back-end
 
-Written by {YOUR_NAMES_OR_LOGINS}
+Written by Kevin Wagner, Jean Paul Gonneau
 
 ## How to run the project
 

@@ -2,6 +2,7 @@
 const express = require('express')
 const WebSocket = require('ws')
 const bodyParser = require('body-parser')
+const axios = require('axios')
 
 // Internal imports
 const router = require('./router.js')
@@ -38,17 +39,56 @@ const wsServer = initWSServer()
 // WebSocket Server events binding
 
 let clients = []
+let clientID = "";
 
 wsServer.on('connection', (webSocket) => {
     console.log('WebSocket Server :: a new client has connected')
     
     webSocket.onclose = (event) => {
-        console.log('WebSocket :: client disconnected')
+        
+        //Lors d'une fermeture de connexion websocket avec un client
         clients = clients.filter((client) => client !== webSocket)
+        console.log('WebSocket :: client disconnected. clientsConnected('+clients.length+')')
     }
     webSocket.onmessage = (message) => {
-        console.log('WebSocket :: got a new message', message.data)
+		
+		//Parsage des donnees envoyees depuis le client
+		var obj_recu = JSON.parse(message.data);
+		
+		if (obj_recu.what == "message")
+		{
+			//Affichage d'un simple message venant depuis le client
+			console.log('WebSocket :: got a new message', message.data);
+			console.log(webSocket.ID);
+		}
+		else (obj_recu.what == "articles_check")
+		{	
+			//Comparaison date du recent article sur page du client avec d'eventuels nouveaux articles provenant de l'API, toutes les 10 secondes
+			setInterval(() => {
+			    var request = axios
+				.get('https://newsapi.org/v2/top-headlines?country=fr&apiKey=52fc969cb14946979ebfe1abafb0c88a')
+				.then((httpResponse) => {
+					
+					//Si la date est inferieur au récent article fourni par l'api, on update les articles, sinon on ne fait rien
+					if ( httpResponse.data.articles[0].publishedAt > obj_recu.last_article_date )
+					{
+						obj_recu.last_article_date =  httpResponse.data.articles[0].publishedAt;
+						webSocket.send(JSON.stringify({what: "articles_update", content: httpResponse.data}));
+					}
+					/*else
+						webSocket.send(JSON.stringify({what: "message", content: 'Up to date newsapi!'}));*/
+					
+				});		
+			}, 10000);
+			
+		}
+        //webSocket.send('message reçu!');
     }
+    
+    //Generation d'ID du client
+    clientID = new Date();
+    clientID &= 0xFFFFFFFF; //ici transformation date en un id unique
+    webSocket.ID = clientID;
     clients.push(webSocket)
 })
 

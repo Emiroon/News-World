@@ -1,2 +1,25 @@
 # News-World
-Projet cours import news en js
+Show news project. (Javascript, Student project)
+
+## How to run the project
+
+'''
+Server
+'''
+
+## Dependencies
+
+Install the missing dependencies with 
+> npm install
+
+## Start server
+>node index.js
+
+'''
+Client
+'''
+
+## Run webpack
+
+You can run the webpack watcher using 
+> npm start

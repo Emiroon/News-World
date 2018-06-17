@@ -1,13 +1,13 @@
 # News-World
 Show news project. (Javascript, Student project)
 
-## How to run the project
+### How to run the project
 
-'''
-Server
-'''
 
-## Dependencies
+## Server
+
+
+### Dependencies
 
 Install the missing dependencies with 
 > npm install
@@ -15,9 +15,14 @@ Install the missing dependencies with
 ## Start server
 >node index.js
 
-'''
-Client
-'''
+
+## Client
+
+
+### Dependencies
+
+Install the missing dependencies with 
+> npm install
 
 ## Run webpack
 

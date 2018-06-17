@@ -1,7 +1,7 @@
-# News-World
+# - News-World -
 Show news project. (Javascript, Student project)
 
-### How to run the project
+### How to run the project :
 
 
 ## Server
@@ -12,7 +12,7 @@ Show news project. (Javascript, Student project)
 Install the missing dependencies with 
 > npm install
 
-## Start server
+### Start server
 >node index.js
 
 
@@ -24,7 +24,7 @@ Install the missing dependencies with
 Install the missing dependencies with 
 > npm install
 
-## Run webpack
+### Run webpack
 
 You can run the webpack watcher using 
 > npm start

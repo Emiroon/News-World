@@ -13,13 +13,13 @@
             <p class="titre-site">The news worldwide</p>
             <div class="nav-wrapper pull-right">
                 <div class="sl-nav">
-                    Langue: <ul>
-                    <li><b>Français</b> <i class="fa fa-angle-down" aria-hidden="true"></i>
-                        <ul>
-                            <li><i class="sl-flag flag-fr"><div id="francais"></div></i> <span class="active">Français</span></li>
-                            <li><i class="sl-flag flag-gb"><div id="english"></div></i>  <span>English</span></li>
-                            <li><i class="sl-flag flag-es"><div id="español"></div></i>  <span>Español</span></li>
-                        </ul>
+                   <ul>
+                    <li><i id="lang" class="sl-flag flag-fr"><div id="francais"></div></i>
+                        <select id="langchg">
+                            <option id="fr" class="diflang" onClick="changeLang(this.id)"><i class="sl-flag flag-fr"><div id="francais" ></div></i> <span class="active">Français</span></option>
+                            <option id="gb" class="diflang"  onClick="changeLang(this.id)"><i class="sl-flag flag-gb"><div id="english" onClick="changeLang(this.id)"></div></i>  <span>English</span></option>
+                            <option id="es" class="diflang"  onClick="changeLang(this.id)"><i class="sl-flag flag-es"><div id="español" onClick="changeLang(this.id)"></div></i>  <span>Español</span></option>
+                        </select>
                     </li>
                 </ul>
                 </div>
@@ -41,5 +41,30 @@
     </div>
 </footer>
 <script src="./dist/news.js"></script>
+<script>
+	function changeLang (lid) {
+		//Permet le changement d'infos en localisation de la langue, donc du pays.
+		document.getElementById("lang").className = "sl-flag flag-"+lid;
+		//document.getElementById("lang").innerHTML = document.getElementById(""+lid+"").innerHTML;
+		/*switch(lid)
+		{
+			case "fr":
+			{
+				document.getElementById(""+lid+"").innerHTML = "Francais"
+				break;
+			}
+			case "en";
+			{
+				break;
+			}
+			case "es":
+			{
+				break;
+			}
+			default:
+				break;
+		}*/
+	}
+</script>
 </body>
 </html>

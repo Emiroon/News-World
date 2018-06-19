@@ -61,18 +61,19 @@ wsServer.on('connection', (webSocket) => {
 			console.log('WebSocket :: got a new message', message.data);
 			console.log(webSocket.ID);
 		}
-		else (obj_recu.what == "articles_check")
+		else if (obj_recu.what == "articles_check")
 		{	
 			//Comparaison date du recent article sur page du client avec d'eventuels nouveaux articles provenant de l'API, toutes les 10 secondes
 			setInterval(() => {
 			    var request = axios
-				.get('https://newsapi.org/v2/top-headlines?country=fr&apiKey=52fc969cb14946979ebfe1abafb0c88a')
+				.get('https://newsapi.org/v2/top-headlines?pageSize=100&country='+obj_recu.lang+'&apiKey=52fc969cb14946979ebfe1abafb0c88a')
 				.then((httpResponse) => {
 					
 					//Si la date est inferieur au récent article fourni par l'api, on update les articles, sinon on ne fait rien
-					if ( httpResponse.data.articles[0].publishedAt > obj_recu.last_article_date )
+					if ( httpResponse.data.articles[0].publishedAt > obj_recu.last_article_date || obj_recu.chlang == "true")
 					{
 						obj_recu.last_article_date =  httpResponse.data.articles[0].publishedAt;
+						obj_recu.chlang = "false";
 						webSocket.send(JSON.stringify({what: "articles_update", content: httpResponse.data}));
 					}
 					/*else

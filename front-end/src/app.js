@@ -3,6 +3,7 @@ import axios from 'axios'
 //Variable pour permettre les mises à jours des nouvelles articles
 let articles_page_actuelles = [];
 let derniere_date_article = "";
+let language_articles = "fr";
 
 //Connexion websocket client, sur le port 8888
 const wsClient = new WebSocket('ws://localhost:8888');
@@ -10,6 +11,8 @@ const wsClient = new WebSocket('ws://localhost:8888');
 //Websocket client ouverture
 wsClient.onopen = (event) => {
 		
+		var langchg = document.getElementById("langchg");
+		langchg.onclick = test;
 }
 
 //Websocket client lors de reception d'un message serveur
@@ -49,10 +52,11 @@ var request = axios
 		actualisationPage(httpResponse.data);
 		
 		//Renvoi de mise à jour du dernier article en date reçu
-		wsClient.send(JSON.stringify({what: "articles_check", last_article_date: derniere_date_article }));
+		wsClient.send(JSON.stringify({what: "articles_check", lang: language_articles, last_article_date: derniere_date_article, chlang:"false" }));
 })
 
 //Fonction permettant de charger les articles sur la page, actualisation de la page
+//Actualisation automatique
 function actualisationPage (httpResponse) {
 	
 		//variables
@@ -101,5 +105,17 @@ function actualisationPage (httpResponse) {
                                 '</div>'
 
         }
-	
 }
+
+
+function test (lid) {
+		//Permet le changement d'infos en localisation de la langue, donc du pays.
+		let classtag = document.getElementById("lang").className.toString();
+		classtag = classtag.substring(classtag.length-2, classtag.length);
+		if (classtag !== language_articles)
+		{
+			language_articles = classtag;
+			//Changera la langue des articles avec la variable chlang
+			wsClient.send(JSON.stringify({what: "articles_check", lang: language_articles, last_article_date: derniere_date_article, chlang:"true" }));
+		}
+	}

@@ -59,6 +59,9 @@ var request = axios
 //Actualisation automatique
 function actualisationPage (httpResponse) {
 	
+		//info
+		document.getElementById("message_info").innerHTML="chargement...";
+	
 		//variables
 		var content_web = httpResponse;  
         var content = document.getElementById("content");
@@ -91,6 +94,12 @@ function actualisationPage (httpResponse) {
 				/*if (author_affiche.lastIndexOf(".") > 0)
 					author_affiche = author_affiche.substring(0, author_affiche.lastIndexOf("."));*/
 			}
+			var description_affiche;
+            if (content_web.articles[i].description !== "" && content_web.articles[i].description!= null ) {
+				description_affiche = content_web.articles[i].description;
+			}
+			else
+				description_affiche = "";
 
 
 
@@ -99,12 +108,14 @@ function actualisationPage (httpResponse) {
                                 '<div class="col-md-3 article" id="singleArticle'+i+'">'+
 									image_affiche+
                                     '<h1 class="titreArticle">'+content_web.articles[i].title+'</h1>'+
-                                    '<p class="articleDescription">'+content_web.articles[i].description+'</p>'+
+                                    '<p class="articleDescription">'+description_affiche+'</p>'+
                                     '<p class="redaction"><b>Source :</b> '+author_affiche+'<br> <b>Le :</b> '+new Date(content_web.articles[i].publishedAt).toUTCString()+'<br> <b>Website :</b> '+content_web.articles[i].source.name+'</p><br>'+
                                     '<a href="'+content_web.articles[i].url+'"><button type="button" class="btn btn-primary">En savoir plus</button></a>'+
                                 '</div>'
 
         }
+        //info
+		document.getElementById("message_info").innerHTML="";
 }
 
 

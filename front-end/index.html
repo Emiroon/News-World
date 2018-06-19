@@ -3,24 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="src/style.css" rel="stylesheet">
-    <title>Mes articles</title>
+    <link href="style.css" rel="stylesheet">
+    <title>News World</title>
 </head>
 <body>
-	<header></header>
-	
-<div class="container">
-    <div class="row">
-        <!-- <div class="col-md-12"> -->
+	<header>
+        <div class="container-fluid header">
+            <h1 div class="titre-site">News World</h1><br>
+            <p class="titre-site">The news worldwide</p>
+            <div class="nav-wrapper pull-right">
+                <div class="sl-nav">
+                    Langue: <ul>
+                    <li><b>Français</b> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        <ul>
+                            <li><i class="sl-flag flag-fr"><div id="francais"></div></i> <span class="active">Français</span></li>
+                            <li><i class="sl-flag flag-gb"><div id="english"></div></i>  <span>English</span></li>
+                            <li><i class="sl-flag flag-es"><div id="español"></div></i>  <span>Español</span></li>
+                        </ul>
+                    </li>
+                </ul>
+                </div>
+            </div>
+    </header>
+    <div class="container-articles">
+        <div class="row">
+            <!--<div class="margin">-->
             <div id="content">
                 <!-- contenu dans app.js -->
             </div>
-       <!-- </div> -->
+       </div>
     </div>
 </div>
 
-<footer>- Powered by NewsApi.org -</footer>
+<footer>
+    <div class="container-fluid footer">
+        <p class="titre-site">- Powered by NewsApi.org -</p>
+    </div>
+</footer>
 <script src="./dist/news.js"></script>
-
 </body>
 </html>

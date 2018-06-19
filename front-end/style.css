@@ -1,3 +1,146 @@
 .article{
     height: 800px;
+    border: solid 1px #6d6e70;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.btn.btn-primary{
+    position: absolute;
+    bottom: 50px;
+    left: 45%;
+}
+
+.img-responsive {
+    padding-top: 20px;
+}
+
+.titre-site{
+    text-align: center;
+}
+
+.header{
+    background-color: #6d6e70;
+    color: #fff;
+}
+
+.footer{
+    background-color: #6d6e70;
+    color: #fff;
+    padding-top: 20px;
+}
+
+.container-articles {
+    margin-left: 15%;
+}
+
+.titreArticle {
+    font-size: 25px;
+    color: #337ab7;
+}
+
+.articleDescription {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/*--------------------------------------------dropdown traduction--------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+.nav-wrapper {
+    margin-right: 30px;
+    margin-bottom: 10px;
+}
+.sl-nav {
+    display: inline;
+}
+.sl-nav ul {
+    margin:0;
+    padding:0;
+    list-style: none;
+    position: relative;
+    display: inline-block;
+}
+.sl-nav li {
+    cursor: pointer;
+}
+.sl-nav li ul {
+    display: none;
+}
+.sl-nav li:hover ul {
+    position: absolute;
+    top:5px;
+    right:-18px;
+    display: inline-block;
+    background: transparent;
+    width: 120px;
+    padding-top: 24px;
+    z-index: 11;
+}
+.sl-nav li:hover ul:before {
+    content: '';
+    display: block;
+    z-index: 20;
+    width: 15px;
+    transform: rotate(45deg);
+    height: 15px;
+    background: #eee;
+    top: 20px;
+    right: 16px;
+    position: absolute;
+    z-index: 10;
+}
+.sl-nav li ul li {
+    position: relative;
+    text-align: left;
+    background: #eee;
+    padding: 15px 15px;
+    z-index: 11;
+    font-size: 15px;
+    color: #3c3c3c;
+}
+.sl-nav li ul li span {
+    padding-left: 5px;
+}
+.sl-nav li ul li span:hover, .sl-nav li ul li span.active {
+    color: #146c78;
+}
+.sl-nav li ul li:nth-of-type(1) {
+    border-radius: 5px 5px 0px 0px;
+    padding-bottom: 0px;
+}
+.sl-nav li ul li:nth-last-of-type(1) {
+    border-radius: 0px 0px 5px 5px;
+    padding-top: 10px;
+}
+.sl-flag {
+    display: inline-block;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+    width: 15px;
+    height: 15px;
+    background: #aaa;
+    border-radius: 50%;
+    position: relative;
+    top: 2px;
+    overflow: hidden;
+}
+.flag-fr {
+    background: url('flags/1x1/fr.svg');
+    background-size: cover;
+    background-position: center center;
+}
+.flag-gb {
+    background: url('flags/1x1/gb.svg');
+    background-size: cover;
+    background-position: center center;
+
+}
+
+.flag-es {
+    background: url('flags/1x1/es.svg');
+    background-size: cover;
+    background-position: center center;
+
 }

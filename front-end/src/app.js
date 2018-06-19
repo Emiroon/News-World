@@ -88,14 +88,16 @@ function actualisationPage (httpResponse) {
 					author_affiche = author_affiche.substring(0, author_affiche.lastIndexOf("."));*/
 			}
 
+
+
 			//Mise en forme du contenu sur la page html
             content.innerHTML = content.innerHTML +
-                                '<div class="col-md-4 article" id="singleArticle'+i+'">'+
+                                '<div class="col-md-3 article" id="singleArticle'+i+'">'+
+									image_affiche+
                                     '<h1 class="titreArticle">'+content_web.articles[i].title+'</h1>'+
                                     '<p class="articleDescription">'+content_web.articles[i].description+'</p>'+
-                                        image_affiche+
                                     '<p class="redaction"><b>Source :</b> '+author_affiche+'<br> <b>Le :</b> '+new Date(content_web.articles[i].publishedAt).toUTCString()+'<br> <b>Website :</b> '+content_web.articles[i].source.name+'</p><br>'+
-                                    '<a href="'+content_web.articles[i].url+'"><button type="button" class="btn btn-primary center-block">En savoir plus</button></a>'+
+                                    '<a href="'+content_web.articles[i].url+'"><button type="button" class="btn btn-primary">En savoir plus</button></a>'+
                                 '</div>'
 
         }

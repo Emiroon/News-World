@@ -11,8 +11,9 @@ const wsClient = new WebSocket('ws://localhost:8888');
 //Websocket client ouverture
 wsClient.onopen = (event) => {
 		
+		//Permet de mettre un listener si changement de language
 		var langchg = document.getElementById("langchg");
-		langchg.onclick = test;
+		langchg.onclick = changeSourceLang;
 }
 
 //Websocket client lors de reception d'un message serveur
@@ -119,7 +120,7 @@ function actualisationPage (httpResponse) {
 }
 
 
-function test (lid) {
+function changeSourceLang (lid) {
 		//Permet le changement d'infos en localisation de la langue, donc du pays.
 		let classtag = document.getElementById("lang").className.toString();
 		classtag = classtag.substring(classtag.length-2, classtag.length);

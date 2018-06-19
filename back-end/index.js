@@ -80,7 +80,7 @@ wsServer.on('connection', (webSocket) => {
 						webSocket.send(JSON.stringify({what: "message", content: 'Up to date newsapi!'}));*/
 					
 				});		
-			}, 10000);
+			}, 1000);
 			
 		}
         //webSocket.send('message reçu!');
